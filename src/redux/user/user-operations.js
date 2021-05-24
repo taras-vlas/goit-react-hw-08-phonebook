@@ -1,6 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import * as actions from "./index";
+import * as actions from "./user-actions";
+
 
 axios.defaults.baseURL = "https://connections-api.herokuapp.com/users";
 
@@ -71,3 +72,10 @@ export const getCurrentUser = () => (dispatch, getState) => {
       dispatch(actions.fetchUserError(error.message));
     });
 };
+
+// export default {
+//   register,
+//   login,
+//   logout,
+//   getCurrentUser
+// };

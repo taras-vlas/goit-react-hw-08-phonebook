@@ -3,17 +3,13 @@ import { Switch } from "react-router-dom";
 import PrivateRoute from "../PrivateRoute";
 import PublicRoute from "../PublicRoute";
 import  Routes  from "../../routes";
-
 import Spinner from 'react-loader-spinner';
 
 const Content = () => {
   return (
     <div className="content">
       <Suspense fallback={
-        
-          <Spinner type="TailSpin" color="#00BFFF" height={40} width={40} className="Spinner" timeout={3000} />
-          //<span>Loading ...</span>
-        
+        <Spinner type="TailSpin" color="#00BFFF" height={40} width={40} className="Spinner" timeout={3000} />         //<span>Loading ...</span>
       }>
         
         <Switch>

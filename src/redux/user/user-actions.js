@@ -6,13 +6,13 @@ const initialState = {
   token: "",
   isLoggedOn: false,
   isLoading: true,
-  isAuthorized: true,
+  isСheckIn: true,
   error: "",
 };
 
 const { actions, reducer } = createSlice({
   name: "user",
-  initialState,
+  initialState,   
   reducers: {
     fetchRegisterRequest: (state) => {
       state.isLoading = true;
@@ -57,21 +57,21 @@ const { actions, reducer } = createSlice({
       state.isLoading = false;
     },
     fetchUserRequest: (state) => {
-      state.isAuthorized = true;
+      state.isСheckIn = true;
     },
     fetchUserSuccess: (state, action) => {
       state.name = action.payload.name;
       state.email = action.payload.email;
       state.isLoggedOn = true;
-      state.isAuthorized = false;
+      state.isСheckIn = false;
     },
     fetchUserError: (state) => {
-      state.isAuthorized = false;
+      state.isСheckIn = false;
       state.isLoggedOn = false;
       state.token = "";
     },
     fetchUserCancel: (state) => {
-      state.isAuthorized = false;
+      state.isСheckIn = false;
     },
   },
 });
@@ -80,15 +80,19 @@ export const {
   fetchRegisterRequest,
   fetchRegisterSuccess,
   fetchRegisterError,
+  
   fetchLoginRequest,
   fetchLoginSuccess,
   fetchLoginError,
+  
   fetchLogoutRequest,
   fetchLogoutSuccess,
   fetchLogoutError,
+  
   fetchUserRequest,
   fetchUserSuccess,
   fetchUserError,
   fetchUserCancel,
 } = actions;
+
 export default reducer;
