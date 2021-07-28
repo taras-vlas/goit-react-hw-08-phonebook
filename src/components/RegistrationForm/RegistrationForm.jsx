@@ -65,7 +65,7 @@ const RegistrationForm = ({ onRegister }) => {
             // className={styles.input}
             type="text"
             name="name"
-            placeholder="Should be your Name"
+           
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             //disabled={isLoading}
@@ -91,13 +91,13 @@ const RegistrationForm = ({ onRegister }) => {
           {/* <h3>Find contacts by name</h3> */}
           <TextField
             label = "Email"       // Фільтрувати:  placeholder="Contact name"
-            onChange={() => handleChange({})}  //{() => handleChange({})}
+            onChange={handleChange}  //{() => handleChange({})}
             value={email}                   //{this.state.name}
             // className={styles.input}
             type="email"
             name="email"
             aria-label="Input for your Email"
-            placeholder="Should be your Email"
+            
             // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             // title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             //disabled={isLoading}

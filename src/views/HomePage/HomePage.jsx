@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import Title from '../../components/Title';
-//import { ReactComponent as HoleImage } from '../../assets/images/hole.svg';
+import { ReactComponent as MainImage } from '../../assets/images/main.svg';
 
 import routes from '../../routes';
 
@@ -12,25 +12,23 @@ const HomePage = () => (
     <section className={styles.container}>
       <Title>Phonebook</Title>
 
-      {/* <div className={styles.thumb}>
-        <HoleImage
-          title="Try it now!"
-          alt="Blackhole"
+      <div className={styles.thumb}>
+        <MainImage
+          title="Go to contacts"
+          alt="BlueSquare"
           className={styles.image}
         />
       </div>
 
-      <p className={styles.text}>
-        Fast, Secure and Mobile Friendly React Application
-      </p> */}
+
 
       <NavLink
         to={routes.CONTACTS}
         className={styles.button}
-        title="Try it now!"
+        title="Go to contacts"
         aria-label="Go to contacts"
       >
-        Try it now!
+        To contacts
       </NavLink>
 
     </section>

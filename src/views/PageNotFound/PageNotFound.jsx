@@ -8,8 +8,7 @@ import styles from './PageNotFound.module.scss';
 // Компонент сторінки 404
 const PageNotFound = () => (
   <div className={styles.container}>
-    {/* <Title>Houston, we’ve had an ERROR</Title> */}
-
+   
     <div className={styles.thumb}>
       <SpaceImage title="Error 404" alt="Error 404" className={styles.image} />
     </div>
@@ -21,10 +20,10 @@ const PageNotFound = () => (
     <NavLink
       to={routes.HOME}
       className={styles.button}
-      title="Return to Home"
-      aria-label="Return to Home page"
+      title="Go to page Home"
+      aria-label="Return to homepage"
     >
-      Return to Home
+      Go to page Home
     </NavLink>
   </div>
 );

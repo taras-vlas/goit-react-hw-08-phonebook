@@ -59,7 +59,7 @@
 
   box-shadow: $main-shadow;
 
-  opacity: 0.8;
+  opacity: 0.7;
 
   transition: opacity $transition-duration $timing-function;
 
@@ -67,7 +67,7 @@
 
   &:hover,
   &:focus {
-    opacity: 1;
+    opacity: 1 ;
 
     transition: opacity $transition-duration $timing-function;
   }
