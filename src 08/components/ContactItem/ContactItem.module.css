@@ -1,0 +1,66 @@
+.buttonBox {
+  margin-left: auto;
+  display: flex;
+}
+
+.buttonBox > button {
+  margin-right: 10px;
+}
+
+.button :hover {
+  background-color: rgb(173, 156, 189);
+}
+
+.button :active {
+  background-color: rgb(179, 164, 194);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.items {
+  display: flex;
+  list-style: none;
+  width: 500px;
+  align-items: center;
+
+  margin: 5px auto;
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  box-shadow: 1px 3px 13px 0px rgba(47, 50, 50, 0.5);
+  background-color: #fff;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  font-size: 20px;
+}
+
+.name {
+  font-weight: bold;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.phone {
+  padding-left: 10px;
+}
+
+.enter {
+  opacity: 0;
+}
+
+.enterActive {
+  opacity: 1;
+  transition: opacity 500ms linear;
+}
+
+.exit {
+  opacity: 1;
+}
+
+.exitActive {
+  opacity: 0;
+  transition: opacity 500ms linear;
+}

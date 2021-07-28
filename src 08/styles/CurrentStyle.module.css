@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background-color: rgb(245, 240, 245); */
+  background-image: url(../components/UI/images/diary-3300606.jpg);
+}
+
+a {
+  text-decoration: none;
+}
+
+p,
+ul {
+  margin-top: 0;
+}

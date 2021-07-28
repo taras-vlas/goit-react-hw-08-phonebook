@@ -111,7 +111,7 @@ const RegisterPage = () => {
                 variant="contained"
                 color="primary"
               >
-                Register
+                Registr
               </Button>
             </form>
           )}

@@ -1,39 +1,83 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ToastContainer } from "react-toastify";
-// import { useRoutes } from "hookrouter";
-// import Routes from "./routes";
-import UserMenu from "./components/UserMenu/UserMenu";
-import Content from "./components/ChoiceMenu";
-import { getCurrentUser } from "./redux/user/user-operations";
-import Spinner from 'react-loader-spinner';
+import { Suspense, lazy, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Switch } from 'react-router-dom'; 
+
+import routes from './routes';
+import { authOperations } from './redux/auth';
+
+import Container from './components/Container';
+import AuthBar from './components/AuthBar';
+import Loader from './components/Loader';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
+
+import { ToastContainer } from 'react-toastify';
+//import Alert from '@material-ui/lab/Alert';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-const App = () => {
-  // const routeResult = useRoutes(Routes);
-  const dispatch = useDispatch();
-  const isСheckIn = useSelector((state) => state.user.isСheckIn);
+const HomePage = lazy(() =>
+  import('./views/HomePage' /* webpackChunkName: "home-page" */),
+);
+const RegistrationPage = lazy(() =>
+  import('./views/RegistrationPage' /* webpackChunkName: "register-page" */),
+);
+const ContactsPage = lazy(() =>
+  import('./views/ContactsPage' /* webpackChunkName: "contacts-page" */),
+);
+const LoginPage = lazy(() =>
+  import('./views/LoginPage' /* webpackChunkName: "login-page" */),
+);
+const PageNotFound = lazy(() =>
+  import('./views/PageNotFound' /* webpackChunkName: "404-page" */),
+);
 
+const App = ({ getCurrentUser }) => {
+  // Отримання поточного юзера при маунті application/застосування 
   useEffect(() => {
-    dispatch(getCurrentUser());
-  }, [dispatch]);
+    getCurrentUser();
+  }, [getCurrentUser]);
 
   return (
-    <>
-      {isСheckIn
-        ? (
-           <Spinner type="TailSpin" color="#00BFFF" height={40} width={40} className="Spinner" timeout={3000} />         //<span>Loading ...</span>
-          )
-        : (
-          <div className="body">
-            <UserMenu />
-            <Content />
-            {/* {routeResult}  */}
-            <ToastContainer />
-          </div>
-      )}
-    </>
+    <Container>
+      <AuthBar />
+
+      <Suspense fallback={<Loader />}>
+        <Switch>
+
+          <PublicRoute
+            exact path={routes.HOME}
+            component={HomePage} />
+
+          <PublicRoute
+            path={routes.REGISTRATION}
+            component={RegistrationPage}
+            restricted
+            redirectTo={routes.CONTACTS} />
+
+          <PublicRoute
+            path={routes.LOGIN}
+            component={LoginPage}
+            restricted
+            redirectTo={routes.CONTACTS} />
+
+          <PrivateRoute
+            path={routes.CONTACTS}
+            component={ContactsPage}
+            redirectTo={routes.LOGIN} />
+
+          <PublicRoute component={PageNotFound} />
+
+        </Switch>
+      </Suspense>
+
+      <ToastContainer autoClose={2000} />
+    </Container>
   );
 };
 
-export default App;
+const mapDispatchToProps = {
+  getCurrentUser: authOperations.getCurrentUser,
+};
+
+export default connect(null, mapDispatchToProps)(App);

@@ -1,0 +1,14 @@
+.filter {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.input {
+  margin: 10px 0;
+  height: 30px;
+  width: 100%;
+}
